@@ -9,6 +9,7 @@ Java、Maven、Git。
 
 # 案例列表
 1. 使用avro生产、消费Kafka https://github.com/felixzh2020/felixzh-learning-kafka/tree/master/src/main/java/org/felixzh/kafka/avro
+2. 使用string生产、消费Kafka https://github.com/felixzh2020/felixzh-learning-kafka/tree/master/src/main/java/org/felixzh/kafka/string
 
 # 微信公众号
 欢迎关注微信公众号(大数据从业者)，期待共同交流沟通、共同成长！
