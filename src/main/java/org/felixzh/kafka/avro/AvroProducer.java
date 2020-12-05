@@ -13,6 +13,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
+/**
+ * @author felixzh
+ * 微信公众号：大数据从业者
+ * 博客地址：https://www.cnblogs.com/felixzh/
+ * */
 public class AvroProducer {
 
     private static Logger log = LoggerFactory.getLogger(AvroProducer.class);

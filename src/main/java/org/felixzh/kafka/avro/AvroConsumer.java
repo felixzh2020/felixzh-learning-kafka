@@ -15,6 +15,11 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
+/**
+ * @author felixzh
+ * 微信公众号：大数据从业者
+ * 博客地址：https://www.cnblogs.com/felixzh/
+ * */
 public class AvroConsumer {
     static Logger log = LoggerFactory.getLogger(AvroConsumer.class);
 
