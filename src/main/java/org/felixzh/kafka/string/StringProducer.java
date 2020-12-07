@@ -23,12 +23,12 @@ public class StringProducer {
         Producer<String, String> producer = new KafkaProducer<>(props);
 
 
-        producer.send(new ProducerRecord<String, String>(Constant.PRODUCER_TOPIC, msg.replace("\r\n", "")));
+        producer.send(new ProducerRecord<String, String>(Constant.PRODUCER_DEBAZIUM_TOPIC, debezium_msg.replace("\r\n", "")));
 
         producer.close();
     }
 
-    private static final String msg = "{\n" +
+    private static final String canal_msg = "{\n" +
             "  \"data\": [\n" +
             "    {\n" +
             "      \"id\": \"111\",\n" +
@@ -65,5 +65,40 @@ public class StringProducer {
             "  \"table\": \"products\",\n" +
             "  \"ts\": 1589373560798,\n" +
             "  \"type\": \"UPDATE\"\n" +
+            "}";
+
+    private static final String debezium_msg = "{\n" +
+            "  \"before\": {\n" +
+            "    \"id\": 111,\n" +
+            "    \"name\": \"scooter\",\n" +
+            "    \"description\": \"Big 2-wheel scooter\",\n" +
+            "    \"weight\": 5.18\n" +
+            "  },\n" +
+            "  \"after\": {\n" +
+            "    \"id\": 111,\n" +
+            "    \"name\": \"scooter\",\n" +
+            "    \"description\": \"Big 2-wheel scooter\",\n" +
+            "    \"weight\": 5.15\n" +
+            "  },\n" +
+            "\"source\": { \n" +
+            "      \"version\": \"1.1.2.Final\",\n" +
+            "      \"name\": \"mysql-server-1\",\n" +
+            "      \"connector\": \"mysql\",\n" +
+            "      \"name\": \"mysql-server-1\",\n" +
+            "      \"ts_ms\": 1465581,\n" +
+            "      \"snapshot\": false,\n" +
+            "      \"db\": \"inventory\",\n" +
+            "      \"table\": \"customers\",\n" +
+            "      \"server_id\": 223344,\n" +
+            "      \"gtid\": null,\n" +
+            "      \"file\": \"mysql-bin.000003\",\n" +
+            "      \"pos\": 484,\n" +
+            "      \"row\": 0,\n" +
+            "      \"thread\": 7,\n" +
+            "      \"query\": \"UPDATE customers SET first_name='Anne Marie' WHERE id=1004\"\n" +
+            "    }," +
+            "  \"op\": \"u\",\n" +
+            "  \"ts_ms\": 1589362330904,\n" +
+            "  \"transaction\": null\n" +
             "}";
 }
