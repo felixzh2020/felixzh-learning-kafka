@@ -1,19 +1,38 @@
 package org.felixzh.kafka.CreateTopicPolicy;
 
+import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.common.errors.PolicyViolationException;
 import org.apache.kafka.server.policy.CreateTopicPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 public class CreateTopicPolicyImpl implements CreateTopicPolicy {
 
     Logger logger = LoggerFactory.getLogger(CreateTopicPolicyImpl.class);
 
+    boolean policyAutoEnable;
+
+    AdminClient adminClient;
+
     @Override
     public void configure(Map<String, ?> configs) {
         logger.info("=========" + configs.toString());
+        policyAutoEnable = (Boolean) configs.get("");
+        Properties properties = new Properties();
+        adminClient = AdminClient.create(properties);
+
+        try {
+            adminClient.listTopics().names().get();
+            adminClient.describeCluster().nodes().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -34,6 +53,8 @@ public class CreateTopicPolicyImpl implements CreateTopicPolicy {
         //kafka-topics.sh --zookeeper已经废弃
         //2.分区数检查至少为节点数？？？？：3:900,
         //饶军：kafka PMC & Confluent联合创始人，指出计算集群topic和分区的公式。
+
+
     }
 
     @Override
