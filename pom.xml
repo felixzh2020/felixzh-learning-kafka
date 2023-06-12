@@ -6,7 +6,11 @@
 
     <groupId>com.felixzh.learning</groupId>
     <artifactId>FelixZhLearningKafka</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>kafka-backup-recovery</module>
+    </modules>
 
     <dependencies>
         <dependency>
