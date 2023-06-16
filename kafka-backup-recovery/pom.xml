@@ -22,6 +22,11 @@
             <artifactId>jcommander</artifactId>
             <version>1.78</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.12.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,7 +42,7 @@
                     <appendAssemblyId>true</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>KafkaJob</mainClass>
+                            <mainClass>BDRJob</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

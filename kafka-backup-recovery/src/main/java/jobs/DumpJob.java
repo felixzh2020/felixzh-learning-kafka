@@ -1,3 +1,5 @@
+package jobs;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;

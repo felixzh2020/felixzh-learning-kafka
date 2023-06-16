@@ -1,13 +1,17 @@
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import jobs.CleanJob;
+import jobs.DumpJob;
+import jobs.Job;
+import jobs.RestoreJob;
 
-public class KafkaJob implements Job {
-    private CommandArgs commandArgs;
-    private JCommander jCommander;
+public class BDRJob implements Job {
+    private final CommandArgs commandArgs;
+    private final JCommander jCommander;
     private Job job;
 
-    public KafkaJob(JCommander jCommander, CommandArgs commandArgs) {
+    public BDRJob(JCommander jCommander, CommandArgs commandArgs) {
         this.jCommander = jCommander;
         this.commandArgs = commandArgs;
 
@@ -25,7 +29,7 @@ public class KafkaJob implements Job {
             usage(jCommander);
         }
 
-        KafkaJob kafkaJob = new KafkaJob(jCommander, commandArgs);
+        BDRJob kafkaJob = new BDRJob(jCommander, commandArgs);
         kafkaJob.go();
     }
 
@@ -35,8 +39,12 @@ public class KafkaJob implements Job {
         }
 
         String server = this.commandArgs.server;
-        if (this.commandArgs.dumpZnode != null && this.commandArgs.outputDir != null) {
+        if (isNotNullOrEmpty(this.commandArgs.dumpZnode) && isNotNullOrEmpty(this.commandArgs.outputDir)) {
             this.job = new DumpJob(server, this.commandArgs.outputDir, this.commandArgs.dumpZnode);
+        } else if (isNotNullOrEmpty(this.commandArgs.restoreZnode) && isNotNullOrEmpty(this.commandArgs.inputDir)) {
+            this.job = new RestoreJob(server, this.commandArgs.restoreZnode, this.commandArgs.inputDir);
+        } else if (isNotNullOrEmpty(this.commandArgs.cleanZnode)) {
+            this.job = new CleanJob(server, this.commandArgs.cleanZnode);
         } else {
             usage(this.jCommander);
         }
@@ -75,5 +83,9 @@ public class KafkaJob implements Job {
             jCommander.usage();
         }
         System.exit(1);
+    }
+
+    private static boolean isNotNullOrEmpty(String str) {
+        return (str != null && !str.isEmpty());
     }
 }
