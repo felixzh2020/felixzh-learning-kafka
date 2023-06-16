@@ -83,7 +83,7 @@ public class DumpJob implements Job, Watcher {
                     boolean mkdirsResult = f.mkdirs();
                     System.out.println("Mkdirs " + outputDir + " result: " + mkdirsResult);
 
-                    writeZnode(zk, outputDir + "/_znode", outputDir + "_acl", currznode);
+                    writeZnode(zk, outputDir + "/_znode", outputDir + "/_acl", currznode);
                     if (children != null) {
                         for (String c : children) {
                             dumpChild(zk, outputDir + "/" + c, znodePath + "/", c);
