@@ -30,7 +30,7 @@ public class FSWalker {
         byte[] data = new byte[0];
 
         if (znode.endsWith("_acl")) {
-            znode = znode.substring(0, znode.length() - "acl".length() + 1);
+            znode = znode.substring(0, znode.length() - "_acl".length() + 1);
             setACL(file, acl);
         } else {
             if (znode.endsWith("_znode")) {
