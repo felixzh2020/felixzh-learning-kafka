@@ -17,7 +17,7 @@ public class SendMsgWithOutTimeStamp {
 
         Producer<String, String> producer = new KafkaProducer<>(props);
 
-        ProducerRecord<String, String> producerRecordWithOutTimeStamp = new ProducerRecord<>("test1", "hello felixzh");
+        ProducerRecord<String, String> producerRecordWithOutTimeStamp = new ProducerRecord<>("test", "hello felixzh");
         producer.send(producerRecordWithOutTimeStamp);
 
         producer.close();

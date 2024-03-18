@@ -17,7 +17,8 @@ public class SendMsgWithTimeStamp {
 
         Producer<String, String> producer = new KafkaProducer<>(props);
 
-        ProducerRecord<String, String> producerRecordWithTimeStamp = new ProducerRecord<>("test2", null, 1000L, null, "hello felixzh");
+        //1742299840000 2025-03-18 20:10:40
+        ProducerRecord<String, String> producerRecordWithTimeStamp = new ProducerRecord<>("test", null, 1742299840000L, null, "hello felixzh");
         producer.send(producerRecordWithTimeStamp);
 
         producer.close();
