@@ -11,6 +11,7 @@
     <modules>
         <module>kafka-backup-recovery</module>
         <module>TimeStampCase</module>
+        <module>SendMaxMessage</module>
     </modules>
 
     <dependencies>
