@@ -14,7 +14,7 @@ import java.util.Properties;
  * 微信公众号：大数据从业者
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Properties properties = new Properties();
         try {
             System.out.println("Usage: java -Dconf=/path/to/conf.properties -jar jarName");
@@ -54,5 +54,7 @@ public class Main {
                 System.exit(-1);
             }
         }
+
+        Thread.sleep(1000000000);
     }
 }
