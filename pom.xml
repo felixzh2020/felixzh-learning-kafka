@@ -12,6 +12,7 @@
         <module>kafka-backup-recovery</module>
         <module>TimeStampCase</module>
         <module>SendMaxMessage</module>
+        <module>kafka-groupId-partition</module>
     </modules>
 
     <dependencies>
